@@ -6,19 +6,14 @@ export default function InputCelular() {
   const [maskedInput, setMaskedInput] = useState("");
 
   function handleChange(e: ChangeEvent<HTMLInputElement>) {
-    console.log("Log line 9: ", e.target.value);
     setInput(e.target.value.replace(/\D/g, ""));
   }
 
   function mask(inputText: string) {
-    console.log('Log line 14: ',inputText)
     const size = inputText.length;
   
-    if (size > 7)
-      return `(${inputText.slice(0, 2)}) ${inputText.slice(
-        2,
-        7
-      )}-${inputText.slice(7)}`;
+    if (size > 10) return `(${inputText.slice(0, 2)}) ${inputText.slice(2,7)}-${inputText.slice(7)}`;
+    if (size > 6) return `(${inputText.slice(0, 2)}) ${inputText.slice(2,6)}-${inputText.slice(6)}`;
     if (size > 2) return `(${inputText.slice(0, 2)}) ${inputText.slice(2)}`;
     return inputText;
   }
